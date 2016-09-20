@@ -11,7 +11,7 @@
 ```
 |- root
   |- bin  可执行文件/定时任务
-  |- dist 编译后代码
+  |- controller 控制器
   |- lib  库文件
   |- public  前端资源文件
     |- js  js文件
@@ -20,9 +20,12 @@
   |- route  路由
   |- src    源码
   |- views  视图
+|- main_route 主路由
+|- app  入口文件
+|- web_config 网站配置
 ```
 ## 安装依赖
-`npm init`
+`npm install`
 
 ## 启动
 `npm start`
