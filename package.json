@@ -1,0 +1,20 @@
+{
+  "name": "buycloud",
+  "version": "1.0.0",
+  "description": "一元云购",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "init": "npm install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onweer/buycloud.git"
+  },
+  "author": "onweer,pengcu,hosn,tshuai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/onweer/buycloud/issues"
+  },
+  "homepage": "https://github.com/onweer/buycloud#readme"
+}
