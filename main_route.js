@@ -3,6 +3,10 @@ var router = require('express').Router();
 
 router.get('/', function (req, res, next) {
     res.send('hello-world')
+});
+
+router.get('/index', function (req, res, next) {
+    res.render("index")
 })
 
 
