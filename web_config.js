@@ -1,5 +1,5 @@
 module.exports = {
   db_config: {
-    uri: 'mongodb://0.0.0.0:27017/buycloud'
+    uri: 'mongodb://115.28.246.33:27017/buycloud'
   }
 }

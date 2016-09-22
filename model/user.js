@@ -47,8 +47,10 @@ var schema = new Schema({
     // 中奖号码
     reward_no: Number
   }]
+}, {
+  collection: 'users'
 });
 
-var User = model('user', schema);
+var User = model('users', schema);
 
 module.exports = User;
