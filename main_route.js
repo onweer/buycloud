@@ -11,6 +11,11 @@ router.get('/index', function(req, res, next) {
 
 router.get('/login',function(req,res){
   res.render("USAndL")
+});
+
+router.post('/login',function(req,res){
+  console.log("login post");
+  res.redirect('/index')
 })
 
 module.exports = router
