@@ -1,4 +1,5 @@
 var router = require('express').Router();
+var _auth = require('./controller/user');
 // import  other router from ./routes folder
 
 router.get('/', function(req, res, next) {
@@ -14,7 +15,7 @@ router.get('/login',function(req,res){
 });
 
 router.post('/login',function(req,res){
-  console.log("login post");
+  _auth('gggg','123');
   res.redirect('/index')
 })
 
