@@ -1,0 +1,64 @@
+@font-face {font-family: 'iconfont';
+    src:url('../font/iconfont.woff') format('woff'), /* chrome、firefox */
+    url('../font/iconfont.ttf') format('truetype'); /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+}
+
+.u-logo{
+    margin-left: 5px;
+    float:left;
+    width: 40px;
+}
+
+.u-input{
+    border: 1px solid lightsteelblue;
+    width: 320px;
+    height: 44px;
+    margin-top: 16px;
+}
+
+.u-windows{
+    width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.u-input input{
+    height: 42px;
+    width: 233px;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.define-div{
+    width: 320px;
+    height: 20px;
+    margin-top: 8px;
+    margin-bottom: 10px;
+}
+.define-div p{
+    font-size: 1px;
+    color: darkgray;
+}
+.define-div a p{
+    font-size: 1px;
+    color: darkgray;
+}
+.iconfont{
+    color: darkgrey;
+    font-family:"iconfont" !important;
+    font-size:24px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+.main-div{
+    width: 500px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+.define-div i{
+    margin-left: 6px;
+}
