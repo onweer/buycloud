@@ -18,23 +18,23 @@ var _auth = function(account, pwd) {
       })
       .exec((err, doc) => {
         if (err) reject(err);
-        if (!doc) reject('用户不存在');
+        if (!doc){ reject('用户不存在')}
         else if (pwd === doc.pwd) {
           console.log(doc);
           resolve('验证成功');
-        } else resolve('验证失败');
+        } else{ resolve('验证失败') };
       });
   });
 }
 
 // 验证用例，promise用法
 
-_auth('gggg', '123')
-  .then(msg => {
-    console.log(msg);
-  })
-  .catch(err => {
-    console.log(err);
-  });
+// _auth('gggg', '123')
+//   .then(msg => {
+//     console.log(msg);
+//   })
+//   .catch(err => {
+//     console.log(err);
+//   });
 
-module.exports.auth = _auth;
+module.exports = _auth;
