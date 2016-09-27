@@ -1,4 +1,3 @@
-var User = require('../model/user');
 var Goods = require('../model/goods');
 
 // 用户验证API，传入帐号，密码
