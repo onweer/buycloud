@@ -10,18 +10,20 @@
 <body>
 <div class="main-div">
     <div id="login">
+      <div>
+          <img style="margin-left: 190px;" src="../public/jpg/logo.png">
+          <div style="float:right;margin-right: 10px;"><a href="#" onclick="closelogin()"><i class="iconfont">&#xe641;</i></a></div>
+      </div>
     <form action="/login" method="post">
         <div class="u-windows">
-            <div>
-                <img src="../public/jpg/logo.png">
-            </div>
+
             <div class="u-input">
-              <div class="u-logo"><i class="iconfont">&#xe611;</i></div>
+              <div class="u-logo"><i class="iconfont">&#xe72c;</i></div>
               <div><input placeholder="登陆邮箱" style="border: 0px"/></div>
             </div>
 
             <div class="u-input">
-                <div class="u-logo"><i class="iconfont">&#xe629;</i> </div>
+                <div class="u-logo"><i class="iconfont">&#xe653;</i> </div>
                 <div><input placeholder="登陆密码" style="border: 0px"/></div>
             </div>
             <div style="width: 320px;height: 44px;margin-top: 16px;">
@@ -33,27 +35,28 @@
             </div>
             <div class="define-div">
                 <div style="float: left;color: darkgrey">其它方式登录
-                    <i class="iconfont">&#xe63f;</i>
+                    <i class="iconfont">&#xe63d;</i>
+                    <i class="iconfont">&#xe63b;</i>
                     <i class="iconfont">&#xe63e;</i>
-                    <i class="iconfont">&#xe609;</i>
-                    <i class="iconfont">&#xe64b;</i></div>
+                    <i class="iconfont">&#xe616;</i></div>
             </div>
         </div>
     </form>
     </div>
     <div id="register" style="display: none">
+      <div>
+          <img style="margin-left: 190px;" src="../public/jpg/logo.png">
+          <div style="float:right;margin-right: 10px;"><a href="#" onclick="closelogin()"><i class="iconfont">&#xe641;</i></a></div>
+      </div>
         <form>
         <div class="u-windows">
-            <div>
-               <img src="../public/jpg/logo.png">
-            </div>
             <div class="u-input">
-                <div class="u-logo"><i class="iconfont">&#xe611;</i></div>
+                <div class="u-logo"><i class="iconfont">&#xe72c;</i></div>
                 <div><input placeholder="注册邮箱" style="border: 0px"/></div>
             </div>
 
             <div class="u-input">
-                <div class="u-logo"><i class="iconfont">&#xe629;</i> </div>
+                <div class="u-logo"><i class="iconfont">&#xe653;</i> </div>
                 <div><input placeholder="6-12位密码， 区分大小写" style="border: 0px"/></div>
             </div>
             <div style="width: 320px;height: 44px;margin-top: 16px;">
@@ -66,19 +69,5 @@
         </div>
     </form></div>
 </div>
-<script>
-    function goReg() {
-        var id1 = document.getElementById("login");
-        var id2 = document.getElementById("register");
-        id1.style.display="none";
-        id2.style.display="block";
-    }
-    function goLogin(){
-        var id1 = document.getElementById("login");
-        var id2 = document.getElementById("register");
-        id1.style.display="block";
-        id2.style.display="none";
-    }
-</script>
 </body>
 </html>

@@ -19,3 +19,7 @@ function show() {
     item.style.display="block";
 
 }
+function closelogin(){
+  var item = document.getElementById("lId");
+  item.style.display="none";
+}
