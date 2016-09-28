@@ -1,5 +1,5 @@
 var Goods = require('../model/goods');
-
+var User = require('../model/user')
 // 用户验证API，传入帐号，密码
 var _auth = function(account, pwd) {
   // var people = new User({
@@ -14,14 +14,17 @@ var _auth = function(account, pwd) {
   // })
   return new Promise((resolve, reject) => {
     User.findOne({
-        account: account
+        account: account,
+        pwd: pwd
       })
       .exec((err, doc) => {
         if (err) reject(err);
         if (!doc){ reject('用户不存在')}
         else if (pwd === doc.pwd) {
-          console.log(doc);
-          resolve('验证成功');
+          resolve({
+            id: doc._id,
+            account: doc.account
+          });
         } else{ resolve('验证失败') };
       });
   });
