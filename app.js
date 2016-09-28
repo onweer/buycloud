@@ -14,23 +14,23 @@ app.set('view engine', 'html');
 app.engine('html', require('ejs-mate'))
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.urlencoded({
-    extended: true,
-    limit: '1mb'
+  extended: true,
+  limit: '1mb'
 }));
 app.use(require('cookie-parser')('haha'));
 app.use(session({
-    name: 'connect.sid',
-    secret: 'haha',
-    // store: new RedisStore(redis_config),
-    cookie: {
-        // path: '/',
-        // httpOnly: true,
-        // secure: false, // https require true
-        maxAge: 60 * 60 * 1000 // 过期时间
-    },
-    // rolling: true,
-    // resave: true, //
-    // saveUninitialized: false //
+  name: 'connect.sid',
+  secret: 'haha',
+  // store: new RedisStore(redis_config),
+  cookie: {
+    // path: '/',
+    // httpOnly: true,
+    // secure: false, // https require true
+    maxAge: 60 * 60 * 1000 // 过期时间
+  }
+  // rolling: true,
+  // resave: true, //
+  // saveUninitialized: false //
 }));
 app.use(compression())
 app.use(routes);
