@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const _auth = require('./controller/user');
+const user = require('./controller/user');
 const _ = require('lodash');
-const encryption  = require('./bin/md5').encryption;
 const validator = require('validator');
 
 // import  other router from ./routes folder
@@ -17,6 +16,14 @@ router.get('/goods', function(req, res, next) {
 /* 登录|注册 */
 router.get('/login',function(req,res){
   res.render("USAndL")
+});
+
+router.post('/login',function(req,res){
+    var user_name = req.body.user_name.toLowerCase()
+    var password = req.body.password
+    user.register(user_name, password).then(msg => {
+      
+    })
 });
 
 /* 登录|注册表单提交*/
@@ -36,7 +43,7 @@ router.post('/register', function (req, res) {
         })
     }
     // password = encryption(password)
-    _auth(user_name, password).then(user => {
+    user.auth(user_name, password).then(user => {
         req.session.user = user
         res.status(200).end()
     }).catch(err => {
