@@ -3,6 +3,7 @@ var User = require('../model/user')
 const encryption = require('../bin/md5').encryption;
 // 用户验证API，传入帐号，密码
 var _auth = function(account, pwd) {
+  console.log('====== _auth method in ======');
   return new Promise((resolve, reject) => {
     User.findOne({
         account: account,
@@ -25,13 +26,16 @@ var _auth = function(account, pwd) {
 }
 
 var _register = function(account, pwd) {
-  console.log('register');
+  console.log('====== _register method in ======');
   return new Promise(function(resolve, reject) {
     var userEntity = new User({
       account: 'hjk',
       pwd: '123'
     })
-    userEntity.save()
+    userEntity.save((err, doc) => {
+      if (err) reject(err);
+      if (doc) resolve('注册成功');
+    })
   });
 }
 
