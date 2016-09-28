@@ -5,12 +5,15 @@
     <title>一元云购</title>
     <link href="../public/css/index.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../public/js/box1.js"></script>
+    <script src="http://www.w3schools.com/lib/w3data.js"></script>
+    <script src="../public/js/login.js"></script>
+
 </head>
 <body>
 <div id="div1" >
    <p>欢迎来到一元云购！</p>
     <ul id="ul1" style="top: -16px;left: 70%;">
-        <li><a  class="active" href="#">请登录</a>|</li>
+        <li><a  class="active" href="#" onclick="show()">请登录</a>|</li>
         <li id="li1"><a href="#">我的一元购<img src="../public/jpg/箭头.png" style="top: 20%;"></a>|</li>
         <li><a href="#">余额</a>|</li>
         <li><a href="#">我的红包</a>|</li>
@@ -89,6 +92,15 @@
         <li style="left: 10%;top: 8px;"> <a href="#"><img src="../public/jpg/pgzc4.png"></a></li>
         <li style="left: 10%;top: 8px;"> <a href="#"><img src="../public/jpg/pgzc5.png"></a></li>
     </ul>
+</div>
+<div id="lId" style="display: none;">
+<div id="logindiv" >
+
+</div>
+<div  w3-include-html="/login"></div>
+<script>
+    w3IncludeHTML()
+</script>
 </div>
 </body>
 </html>
