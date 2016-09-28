@@ -11,7 +11,7 @@
 <div class="main-div">
     <div id="login">
       <div>
-          <img style="margin-left: 190px;" src="../public/jpg/logo.png">
+          <img style="margin-left: 190px; margin-top: 20px;" src="../public/jpg/logo.png">
           <div style="float:right;margin-right: 10px;"><a href="#" onclick="closelogin()"><i class="iconfont">&#xe641;</i></a></div>
       </div>
     <form action="/login" method="post">
@@ -19,12 +19,12 @@
 
             <div class="u-input">
               <div class="u-logo"><i class="iconfont">&#xe72c;</i></div>
-              <div><input placeholder="登陆邮箱" style="border: 0px"/></div>
+              <div><input placeholder="登陆邮箱" style="border: 0px" name="user_name"/></div>
             </div>
 
             <div class="u-input">
                 <div class="u-logo"><i class="iconfont">&#xe653;</i> </div>
-                <div><input placeholder="登陆密码" style="border: 0px"/></div>
+                <div><input placeholder="登陆密码" style="border: 0px" name="password"/></div>
             </div>
             <div style="width: 320px;height: 44px;margin-top: 16px;">
                 <button class="btn btn-primary" style="width: 100%">登 陆</button>
@@ -45,19 +45,19 @@
     </div>
     <div id="register" style="display: none">
       <div>
-          <img style="margin-left: 190px;" src="../public/jpg/logo.png">
+          <img style="margin-left: 190px;margin-top: 20px;" src="../public/jpg/logo.png">
           <div style="float:right;margin-right: 10px;"><a href="#" onclick="closelogin()"><i class="iconfont">&#xe641;</i></a></div>
       </div>
-        <form>
+        <form action="register" method="post">
         <div class="u-windows">
             <div class="u-input">
                 <div class="u-logo"><i class="iconfont">&#xe72c;</i></div>
-                <div><input placeholder="注册邮箱" style="border: 0px"/></div>
+                <div><input placeholder="注册邮箱" style="border: 0px" name="user_name"/></div>
             </div>
 
             <div class="u-input">
                 <div class="u-logo"><i class="iconfont">&#xe653;</i> </div>
-                <div><input placeholder="6-12位密码， 区分大小写" style="border: 0px"/></div>
+                <div><input placeholder="6-12位密码， 区分大小写" style="border: 0px" name="password"/></div>
             </div>
             <div style="width: 320px;height: 44px;margin-top: 16px;">
                 <button class="btn btn-primary" style="width: 100%">注 册</button>

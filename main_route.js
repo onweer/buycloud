@@ -18,7 +18,7 @@ router.get('/login', function(req, res) {
   res.render("USAndL")
 });
 
-router.post('/login', function(req, res) {
+router.post('/register', function(req, res) {
   var user_name = req.body.user_name.toLowerCase()
   var password = req.body.password
   user.register(user_name, password).then(msg => {
@@ -27,7 +27,7 @@ router.post('/login', function(req, res) {
 });
 
 /* 登录|注册表单提交*/
-router.post('/register', function(req, res) {
+router.post('/login', function(req, res) {
   var user_name = req.body.user_name.toLowerCase()
   var password = req.body.password
   if (!validator.isEmail(user_name)) {
