@@ -91,17 +91,13 @@ router.post('/add_to_cart', function(req, res) {
 
 })
 
-// 购物车
-router.post('/shopping_cart', function(req, res) {
-  var _id = req.body._id;
-  var goods_name = req.body.goods_name;
-  var goods_num = req.body.goods_num;
-})
 
+// 购物车页面
 router.get('/shopping_cart', function(req, res) {
   // 从数据库中取用户购物车的信息
   user.shoppingCartInfo(req.query.id).then(carts => {
-    res.render('shopping-cart', carts.shopping_cart) // 购物车数组
+    console.log(carts);
+    res.render('shopping-cart', { carts: carts}) // 购物车数组
   }).catch(err => {
     console.log(err);
   })

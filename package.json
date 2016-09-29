@@ -20,7 +20,8 @@
     "mongoose": "^4.6.1",
     "validator": "5.4.0",
     "lodash": "4.13.1",
-    "compression": "1.6.2"
+    "compression": "1.6.2",
+    "eventproxy": "0.3.4"
   },
   "author": "onweer,pengcu,hosn,tshuai",
   "license": "ISC",

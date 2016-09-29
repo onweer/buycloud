@@ -8,7 +8,7 @@ var schema = new Schema({
   // 商品描述
   content: String,
   // 商品价格
-  prize: Number,
+  price: Number,
   // 开奖所需人次
   required_no: Number,
   // 以参与人次

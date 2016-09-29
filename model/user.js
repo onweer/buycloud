@@ -26,8 +26,8 @@ var schema = new Schema({
   }],
   // 购物车
   shopping_cart: [{
-    // 商品名称
-    name: String,
+    // 商品id
+    id: String,
     // 商品数量
     amount: Number
   }],
