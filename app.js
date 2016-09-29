@@ -4,7 +4,11 @@ const routes = require('./main_route')
 const path = require('path');
 const session = require('express-session');
 const compression = require('compression');
+const mongoExpress = require('mongo-express/lib/middleware');
+const mongoExpressConfig = require('./mongo_express_config');
+
 var app = express();
+app.use('/mongo', mongoExpress(mongoExpressConfig));
 
 // process.on('uncaughtException', function(err) {
 //     logger.error('uncaughtException: %s', err.stack)

@@ -14,6 +14,18 @@ var _oneGoods = function (goods_id) {
   })
 }
 
+var _getAllGoods = function () {
+  console.log('======= _getAllGoods method in ======');
+  return new Promise((resolve, reject) => {
+    Goods.find({})
+      .exec((err, docs) => {
+        if (err) reject(err);
+        if (!docs) reject('没有商品信息');
+        else resolve(docs);
+      });
+  });
+}
+
 var _newGoods = function (name, content, prize, required_no, sort_info) {
   console.log('====== _newGoods method in ======');
   return new Promise((resolve, reject) => {
@@ -35,3 +47,4 @@ var _newGoods = function (name, content, prize, required_no, sort_info) {
 
 module.exports.oneGoods = _oneGoods
 module.exports.newGoods = _newGoods
+module.exports.getAllGoods = _getAllGoods;

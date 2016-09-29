@@ -133,26 +133,13 @@
         <img src="../public/jpg/pgzc1.png" style="left: 6%;top: 8px;width: 16%;">
       </a>
       <ul>
-        <li style="left: 15%;top: 62px;width: 20%;">
-          <a href="/goods?goods_id=57ec841046c36206f4c27187">
-            <img style="margin-left: 12%;width: 88%;" src="../public/jpg/pgzc2.png">
-          </a>
-        </li>
-        <li style="left: 15%;top: 62px;width: 20%;">
-          <a href="#">
-            <img style="margin-left: 12%;width: 88%;" src="../public/jpg/pgzc3.png">
-          </a>
-        </li>
-        <li style="left: 15%;top: 62px;width: 20%;">
-          <a href="#">
-            <img style="margin-left: 12%;width: 88%;" src="../public/jpg/pgzc4.png">
-          </a>
-        </li>
-        <li style="left: 15%;top: 62px;width: 20%;">
-          <a href="#">
-            <img style="margin-left: 12%;width: 88%;" src="../public/jpg/pgzc5.png">
-          </a>
-        </li>
+        <% for(var i=0; i<goods.length;i++){ %>
+          <li style="left: 15%;top: 62px;width: 20%;">
+            <a href="/goods?goods_id=<%=goods[i]._id %>">
+              <img style="margin-left: 12%;width: 88%;" src="../public/jpg/pgzc<%=i+2 %>.png">
+            </a>
+          </li>
+          <% } %>
       </ul>
     </div>
     <div id="box">
