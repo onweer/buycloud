@@ -65,7 +65,11 @@ router.get('/newgoods', function(req, res) {
 
 /* 管理员添加一个商品*/
 router.post('/newgoods', function(req, res) {
-
+  goods.newGoods('iPhone7 Plus', '一个肾也好', 8888, 9999, '手机').then(doc => {
+    console.log(doc);
+  }).catch(err => {
+    console.log(err);
+  })
 })
 
 /* 某一商品展示页面 */

@@ -39,8 +39,10 @@ var schema = new Schema({
     // 揭示获奖日期
     end_date: Date
   }]
+}, {
+  collection: 'goods'
 });
 
 var Goods = model('goods', schema);
 
-model.exports = Goods;
+module.exports = Goods;

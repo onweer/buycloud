@@ -1,5 +1,6 @@
 var Goods = require('../model/goods');
 var User = require('../model/user')
+
 const encryption = require('../bin/md5').encryption;
 // 用户验证API，传入帐号，密码
 var _auth = function(account, pwd) {
