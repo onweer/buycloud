@@ -21,7 +21,7 @@
           <p><%= carts[i].name %></p>
           <p><%= carts[i].price %></p>
         </div>
-      </li><li class="cart-li"><%= carts[i].remainNum %></li><li class="cart-li"><input name="name" value="<%= carts[i].price %>"></li><li style="margin-right:10%">￥1.00</li><li><i class="iconfont">&#xe641;</i></li>
+      </li><li class="cart-li"><%= carts[i].remainNum %></li><li class="cart-li"><input name="name" value="<%= carts[i].amount %>"></li><li style="margin-right:10%">￥1.00</li><li><i class="iconfont">&#xe641;</i></li>
     </ul>
     <% } %>
     <div class="cart-paybtn"><p>共3件商品金额总计：￥3.00</p> <button type="button" name="button">结算</button></div>
