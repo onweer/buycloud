@@ -72,6 +72,7 @@ router.post('/newgoods', function(req, res) {
   })
 })
 
+
 /* 某一商品展示页面 */
 router.get('/goods', function(req, res) {
   var goods_id = req.query.goods_id
@@ -90,7 +91,13 @@ router.post('/add_to_cart', function(req, res) {
 
 })
 
-// 购物车页面
+// 购物车
+router.post('/shopping_cart', function(req, res) {
+  var _id = req.body._id;
+  var goods_name = req.body.goods_name;
+  var goods_num = req.body.goods_num;
+})
+
 router.get('/shopping_cart', function(req, res) {
   // 从数据库中取用户购物车的信息
   user.shoppingCartInfo(req.query.id).then(carts => {
