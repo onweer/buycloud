@@ -2,6 +2,7 @@ var Goods = require('../model/goods');
 var User = require('../model/user')
 var eventproxy = require('eventproxy')
 const encryption = require('../bin/md5').encryption;
+const _ = require('lodash');
 // 用户验证API，传入帐号，密码
 var _auth = function (account, pwd) {
   console.log('====== _auth method in ======');
@@ -26,6 +27,7 @@ var _auth = function (account, pwd) {
   });
 }
 
+// 注册
 var _register = function (account, pwd) {
   console.log('====== _register method in ======');
   return new Promise(function (resolve, reject) {
@@ -40,10 +42,58 @@ var _register = function (account, pwd) {
   });
 }
 
-var _shoppingCart = function (goodsArray) {
+
+// joined_list: [{
+//   // 用户购买时间
+//   purchase_time: Date,
+//   // 用户姓名
+//   user_name: String,
+//   // 用户IP
+//   user_ip: String,
+//   // 分配的号码
+//   receive_no: [Number]
+// }],
+// 用户结算购物车
+var _shoppingCart = function (user_name, user_ip, ids, amounts) {
   console.log('====== _shoppingCart method in ======');
+  return new Promise(function (resolve, reject) {
+    if(!Array.isArray(ids) || !Array.isArray(ids)) reject('参数错误')
+    var ep = new eventproxy()
+    ep.after('done', ids.length, function (docs) {
+      resolve(docs)
+    })
+    ids.forEach(function (_id, index) {
+      // 商品集合添加一条参与记录
+      Goods.findById(_id, (err, doc) => {
+        console.log(doc);
+        var joined_list = doc.joined_list || [];
+        var receive_no = [];
+        console.log(receive_no);
+        console.log(amounts.length);
+        if(joined_list.length !== 0){
+          var start = _.last(joined_list[joined_list.length - 1].receive_no);
+        }else {
+          var start = 0;
+        }
+        for (var i = start; i < i + parseInt(amounts[index]) + 1; i++) {
+          console.log(i);
+          receive_no.push(++i)
+        }
+        joined_list.push({
+          purchase_time: new Date(),
+          user_name: user_name,
+          user_ip: user_ip,
+          receive_no: receive_no
+        })
+        doc.joined_list = joined_list;
+        ep.emit('done', doc.save())
+      })
+    })
+    console.log(amounts);
+  })
 }
 
+// 获取购物车信息
 var _shoppingCartInfo = function (uid) {
     console.log('====== _shoppingCartInfo method in ======');
     return new Promise(function (resolve, reject) {

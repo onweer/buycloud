@@ -72,7 +72,7 @@ router.post('/login', function (req, res) {
 
 /* 管理员添加商品页面*/
 
-router.get('/newgoods', function (req, res) {
+router.get('/newgoods', function(req, res) {
 
 })
 
@@ -124,15 +124,25 @@ router.get('/shopping_cart', function (req, res) {
         carts: carts
       }) // 购物车数组
   }).catch(err => {
-    console.log(err);
+    res.render('404', {
+      err: err.toString()
+    });
   })
 })
 
-// 购物车
-router.post('/shopping_cart', function (req, res) {
-  var id = req.body.id;
-  var goods_name = req.body.goods_name;
-  var goods_num = req.body.goods_num;
+
+// 购物车结算
+router.post('/shopping_cart', function(req, res) {
+  var _id = req.body._id;
+  var amount = req.body.amount;
+  user.shoppingCart(req.session.user.user_name, req.ip, _id, amount).then((doc) => {
+    // 返回到参与记录
+    console.log(doc);
+  }).catch(err => {
+    res.render('404', {
+      err: err.toString()
+    });
+  })
 })
 
 // 结算
