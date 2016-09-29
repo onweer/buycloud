@@ -6,7 +6,9 @@ const validator = require('validator');
 // import  other router from ./routes folder
 
 router.get('/', function(req, res, next) {
-  res.render('index', { user_name: '请登录'})
+  res.render('index', {
+    user_name: '请登录'
+  })
 });
 
 router.get('/goods', function(req, res, next) {
@@ -45,11 +47,13 @@ router.post('/register', function(req, res) {
 router.post('/login', function(req, res) {
   var user_name = req.body.user_name.toLowerCase().trim()
   var password = req.body.password.trim()
-  // password = encryption(password)
+    // password = encryption(password)
   user.auth(user_name, password).then(user => {
     req.session.user = user
     console.log(user);
-    res.status(200).render('index', user)
+    res.status(200).render('index', {
+      user_name: user.account
+    })
   }).catch(err => {
     console.log(err);
   });
@@ -65,5 +69,19 @@ router.post('/login', function(req, res) {
 // router.post('/goods', function (req, res) {
 //
 // })
+//
+
+// 购物车
+router.post('/shopping_cart', function (req, res) {
+    var _id = req.body._id;
+    var goods_name = req.body.goods_name;
+    var goods_num = req.body.goods_num;
+
+})
+
+// 结算
+router.post('/shopping', function (req, res) {
+    
+})
 
 module.exports = router

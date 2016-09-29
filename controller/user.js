@@ -39,6 +39,10 @@ var _register = function(account, pwd) {
   });
 }
 
+var _shoppingCart = function(goodsArray) {
+  console.log('====== _shoppingCart method in ======');
+}
+
 // 验证用例，promise用法
 
 // _auth('gggg', '123')
