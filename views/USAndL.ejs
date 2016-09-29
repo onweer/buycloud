@@ -1,107 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <title>URAndL</title>
-  <link rel="stylesheet" type="text/css" href="../public/css/URAndL.css">
-  <link rel="stylesheet" type="text/css" href="../public/css/spectre.min.css">
+    <meta charset="UTF-8">
+    <title>URAndL</title>
+    <link rel="stylesheet" type="text/css" href="../public/css/URAndL.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/spectre.min.css">
 
 </head>
-
 <body>
-  <div class="main-div">
+<div class="main-div">
     <div id="login">
       <div>
-        <img style="margin-left: 190px; margin-top: 20px;" src="../public/jpg/logo.png">
-        <div style="float:right;margin-right: 10px;"><a href="#" onclick="closelogin()"><i class="iconfont">&#xe641;</i></a>
-        </div>
+          <img style="margin-left: 190px; margin-top: 20px;" src="../public/jpg/logo.png">
+          <div style="float:right;margin-right: 10px;"><a href="#" onclick="closelogin()"><i class="iconfont">&#xe641;</i></a></div>
       </div>
-      <form action="/login" method="post">
+    <form action="/login" method="post">
         <div class="u-windows">
 
-          <div class="u-input">
-            <div class="u-logo"><i class="iconfont">&#xe72c;</i>
+            <div class="u-input">
+              <div class="u-logo"><i class="iconfont">&#xe72c;</i></div>
+              <div><input placeholder="登陆邮箱" style="border: 0px" name="user_name"/></div>
             </div>
-            <div>
-              <input placeholder="登陆邮箱" style="border: 0px" name="user_name" />
-            </div>
-          </div>
 
-          <div class="u-input">
-            <div class="u-logo"><i class="iconfont">&#xe653;</i> 
+            <div class="u-input">
+                <div class="u-logo"><i class="iconfont">&#xe653;</i> </div>
+                <div><input type="password" placeholder="登陆密码" style="border: 0px" name="password"/></div>
             </div>
-            <div>
-              <input placeholder="登陆密码" style="border: 0px" name="password" />
+            <div style="width: 320px;height: 44px;margin-top: 16px;">
+                <button class="btn btn-primary" style="width: 100%">登 陆</button>
             </div>
-          </div>
-          <div style="width: 320px;height: 44px;margin-top: 16px;">
-            <button class="btn btn-primary" style="width: 100%">登 陆</button>
-          </div>
-          <div class="define-div">
-            <div style="float: left;">
-              <p>重置</p>
+            <div class="define-div">
+                <div style="float: left;"><p>重置</p></div>
+                <div style="float: right;"><a href="#" onclick="goReg()"><p>去注册>></p></a></div>
             </div>
-            <div style="float: right;">
-              <a href="#" onclick="goReg()">
-                <p>去注册>></p>
-              </a>
+            <div class="define-div">
+                <div style="float: left;color: darkgrey">其它方式登录
+                    <i class="iconfont">&#xe63d;</i>
+                    <i class="iconfont">&#xe63b;</i>
+                    <i class="iconfont">&#xe63e;</i>
+                    <i class="iconfont">&#xe616;</i></div>
             </div>
-          </div>
-          <div class="define-div">
-            <div style="float: left;color: darkgrey">其它方式登录
-              <i class="iconfont">&#xe63d;</i>
-              <i class="iconfont">&#xe63b;</i>
-              <i class="iconfont">&#xe63e;</i>
-              <i class="iconfont">&#xe616;</i>
-            </div>
-          </div>
         </div>
-      </form>
+    </form>
     </div>
     <div id="register" style="display: none">
       <div>
-        <img style="margin-left: 190px;margin-top: 20px;" src="../public/jpg/logo.png">
-        <div style="float:right;margin-right: 10px;">
-          <a href="#" style="text-decoration: none;" onclick="closelogin()">
-            <i class="iconfont">&#xe641;</i>
-          </a>
-        </div>
+          <img style="margin-left: 190px;margin-top: 20px;" src="../public/jpg/logo.png">
+          <div style="float:right;margin-right: 10px;">
+            <a href="#" style="text-decoration: none;" onclick="closelogin()">
+              <i class="iconfont">&#xe641;</i>
+            </a>
+          </div>
       </div>
-      <form action="register" method="post">
+        <form action="register" method="post">
         <div class="u-windows">
-          <div class="u-input">
-            <div class="u-logo"><i class="iconfont">&#xe72c;</i>
+            <div class="u-input">
+                <div class="u-logo"><i class="iconfont">&#xe72c;</i></div>
+                <div><input placeholder="注册邮箱" style="border: 0px" name="user_name"/></div>
             </div>
-            <div>
-              <input placeholder="注册邮箱" style="border: 0px" name="user_name" />
-            </div>
-          </div>
 
-          <div class="u-input">
-            <div class="u-logo"><i class="iconfont">&#xe653;</i> 
+            <div class="u-input">
+                <div class="u-logo"><i class="iconfont">&#xe653;</i> </div>
+                <div><input type="password" placeholder="6-12位密码， 区分大小写" style="border: 0px" name="password"/></div>
             </div>
-            <div>
-              <input placeholder="6-12位密码， 区分大小写" style="border: 0px" name="password" />
+            <div style="width: 320px;height: 44px;margin-top: 16px;">
+                <button class="btn btn-primary" style="width: 100%">注 册</button>
             </div>
-          </div>
-          <div style="width: 320px;height: 44px;margin-top: 16px;">
-            <button class="btn btn-primary" style="width: 100%">注 册</button>
-          </div>
-          <div class="define-div">
-            <div style="float: left;">
-              <p>重置</p>
+            <div class="define-div">
+                <div style="float: left;"><p>重置</p></div>
+                <div style="float: right;"><a href="#" onclick="goLogin()"><p>去登陆>></p></a></div>
             </div>
-            <div style="float: right;">
-              <a href="#" onclick="goLogin()">
-                <p>去登陆>></p>
-              </a>
-            </div>
-          </div>
         </div>
-      </form>
-    </div>
-  </div>
+    </form></div>
+</div>
 </body>
-
 </html>

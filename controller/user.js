@@ -1,5 +1,6 @@
 var Goods = require('../model/goods');
 var User = require('../model/user')
+var eventproxy = require('eventproxy')
 const encryption = require('../bin/md5').encryption;
 // 用户验证API，传入帐号，密码
 var _auth = function (account, pwd) {
@@ -46,10 +47,34 @@ var _shoppingCart = function (goodsArray) {
 var _shoppingCartInfo = function (uid) {
     console.log('====== _shoppingCartInfo method in ======');
     return new Promise(function (resolve, reject) {
+      var ep = new eventproxy();
       User.findById(uid, (err, doc) => {
         if (err) reject(err);
         if (!doc) reject('用户不存在')
-        if (doc) resolve(doc)
+        if (doc.shopping_cart.length > 0) {
+          var ep = new eventproxy(),
+            carts = [];
+          ep.after('done', doc.shopping_cart.length, function (carts) {
+            resolve(carts)
+          })
+          console.log(doc.shopping_cart);
+          doc.shopping_cart.forEach(function (cart) {
+            Goods.findById(cart.id, (err, doc2) => {
+              if (err) reject(err)
+              console.log(doc2);
+              var temp = {};
+              temp.name = doc2.name;
+              temp.price = doc2.price;
+              temp.remainNum = doc2.required_no - doc2.joined_no;
+              temp.amount = doc.shopping_cart.amount;
+              carts.push(temp);
+              ep.emit('done', temp)
+            })
+          })
+
+        } else {
+          resolve([])
+        }
       })
     })
   }
