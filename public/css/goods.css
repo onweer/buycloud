@@ -21,7 +21,6 @@
   height: 100%;
   border-radius: 6px;
   background: url(../jpg/bar.jpg);
-  width: 20%;
 }
 .cal-time {
   display: inline-block;

@@ -14,7 +14,10 @@
   <div id="div1">
     <p>欢迎来到一元云购！</p>
     <ul id="ul1" style="top: -16px;left: 70%;">
-      <li><a class="active" href="#">请登录</a>|</li>
+      <li>
+        <a class="active" href="#">
+          <%=user_name || '请登录' %>
+        </a>|</li>
       <li id="li1"><a href="#">我的一元购<img src="../public/jpg/箭头.png" style="top: 20%;"></a>|</li>
       <li><a href="#">余额</a>|</li>
       <li><a href="#">我的红包</a>|</li>
@@ -59,22 +62,31 @@
     </div>
     <div class="top-right">
       <div class="product-info">
-        <p style="font-size: 1.8em;">IPhone7 128G</p>
-        <p>现货即发！苹果最新旗舰-IPhone7 128G重磅来临（颜色随机）！ios10系统，A10处理器动力更强劲~</p>
+        <p style="font-size: 1.8em;">
+          <%=name %>
+        </p>
+        <p>
+          <%=content %>
+        </p>
       </div>
       <div class="product-period">
-        <div class="period-num">第2426期</div>
+        <div class="period-num">第
+          <%=last_no %>期</div>
         <div class="period-bar">
-          <div class="total-person-time">总需人次：7088</div>
+          <div class="total-person-time">总需人次：
+            <%=required_no %>
+          </div>
           <div class="bar-wrapper">
-            <div class="bar" style="width: 10%;"></div>
+            <div class="bar" style="width: <%=parseInt(joined_no / required_no * 100) %>%;"></div>
           </div>
           <div class="other-time">
             <div class="joined-time">
-              以参与人次：789
+              以参与人次：
+              <%=joined_no %>
             </div>
             <div class="remain-time">
-              剩余参与人次：6299
+              剩余参与人次：
+              <%=required_no - joined_no %>
             </div>
           </div>
         </div>

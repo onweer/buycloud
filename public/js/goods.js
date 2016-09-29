@@ -8,7 +8,7 @@ var minsTime = $('.minus-time');
 var buyTime = $('.buy-time');
 
 joinBtn.onclick = function (evt) {
-
+  window.location.href = '/';
 }
 
 plusTime.onclick = function (evt) {
