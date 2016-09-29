@@ -27,7 +27,7 @@ var schema = new Schema({
   // 购物车
   shopping_cart: [{
     // 商品id
-    id: String,
+    id: Schema.Types.ObjectId,
     // 商品数量
     amount: Number
   }],
