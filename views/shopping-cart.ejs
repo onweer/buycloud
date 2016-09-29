@@ -13,18 +13,20 @@
   <div class="cart-title">
     <span style="margin-right:42%;margin-left:4%">商品</span><span style="margin-right:13%">剩余人次</span><span style="margin-right:13%">云购人次</span><span>小计</span>
   </div>
-
+<form action="/shopping_cart" method="post">
   <% for(var i=0; i<carts.length;i++){ %>
     <ul>
-      <li class="cart-li-pic"><img style="margin-top:5%" src="http://goodsimg.1yyg.com/GoodsPic/pic-70-70/20160908104621494.jpg">
-        <div style="float:right;margin-right:100px;margin-top:7%">
+      <input type="text" name="_id" value="<%= carts[i]._id%>" style="display:none">
+      <li class="cart-li-pic"><img style="margin-top:5%;clear:both" src="http://goodsimg.1yyg.com/GoodsPic/pic-70-70/20160908104621494.jpg">
+        <div style="float:right;margin-right:150px;margin-top:7%">
           <p><%= carts[i].name %></p>
-          <p><%= carts[i].price %></p>
+          <p>价值： ￥<%= carts[i].price %></p>
         </div>
-      </li><li class="cart-li"><%= carts[i].remainNum %></li><li class="cart-li"><input name="name" value="<%= carts[i].amount %>"></li><li style="margin-right:10%">￥1.00</li><li><i class="iconfont">&#xe641;</i></li>
+      </li><li class="cart-li"><%= carts[i].remainNum %></li><li class="cart-li"><input name="amount" value="<%= carts[i].amount %>"></li><li style="margin-right:10%;color:#f60;margin-top:4%">￥1.00</li><li style="margin-top:4%"><i class="iconfont">&#xe641;</i></li>
     </ul>
     <% } %>
-    <div class="cart-paybtn"><p>共3件商品金额总计：￥3.00</p> <button type="button" name="button">结算</button></div>
+    <div class="cart-paybtn"><p>共<%= carts.length%>件商品金额总计：￥1.00</p> <button type="submit" name="button">结算</button></div>
+  </form>
 </div>
 </body>
 </html>
