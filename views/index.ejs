@@ -20,7 +20,13 @@
           <a class="active" href="#" onclick="show()">
             <%=user_name %>
           </a>|</li>
-        <li id="li1"><a href="#">我的一元购<img src="../public/jpg/箭头.png" style="top: 20%;"></a>|</li>
+        <li id="li1"><a href="#">我的一元购<img src="../public/jpg/箭头.png" style="top: 20%;"></a>|
+          <ul>
+              <li><a href="#">参与记录</a> </li>
+              <li><a href="#">个人记录</a> </li>
+              <li><a href="#">中奖记录</a> </li>
+          </ul>
+        </li>
         <li><a href="#">余额</a>|</li>
         <li><a href="#">我的红包</a>|</li>
         <li><a href="#">充值</a>|</li>
@@ -48,7 +54,7 @@
         </li>
       </ul>
       <a href="#">
-        <img src="../public/jpg/公平公正.png" style="top: 365px;left: -44%;width:19%;">
+        <img src="../public/jpg/公平公正.png" style="top: 190px;left: -44%;width:19%;">
       </a>
       <a href="#">
         <img src="../public/jpg/玩法.png" style="left: 5%;top: 3px;width: 18%;z-index: 2;">
@@ -67,23 +73,23 @@
         </li>
       </ul>
       <ul id="cdlul">
-        <li><a href="#">全部商品</a> 
+        <li><a href="#">全部商品</a>
         </li>
-        <li><a href="#">苹果专区</a> 
+        <li><a href="#">苹果专区</a>
         </li>
-        <li><a href="#">充值卡</a> 
+        <li><a href="#">充值卡</a>
         </li>
-        <li><a href="#">黄金首饰</a> 
+        <li><a href="#">黄金首饰</a>
         </li>
-        <li><a href="#">国际潮牌</a> 
+        <li><a href="#">国际潮牌</a>
         </li>
-        <li><a href="#">手机平板</a> 
+        <li><a href="#">手机平板</a>
         </li>
-        <li><a href="#">电脑数码</a> 
+        <li><a href="#">电脑数码</a>
         </li>
-        <li><a href="#">家用电器</a> 
+        <li><a href="#">家用电器</a>
         </li>
-        <li><a href="#">运动户外</a> 
+        <li><a href="#">运动户外</a>
         </li>
       </ul>
     </div>
@@ -128,42 +134,58 @@
     </div>
     <!--苹果专场-->
     <div id="pgzc">
-      <p>苹果专场</p>
-      <a href="#">
-        <img src="../public/jpg/pgzc1.png" style="left: 6%;top: 8px;width: 16%;">
-      </a>
-      <ul>
-        <li style="left: 15%;top: 62px;width: 20%;">
-          <a href="/goods?goods_id=57ec841046c36206f4c27187">
-            <img style="margin-left: 12%;width: 88%;" src="../public/jpg/pgzc2.png">
-          </a>
-        </li>
-        <li style="left: 15%;top: 62px;width: 20%;">
-          <a href="#">
-            <img style="margin-left: 12%;width: 88%;" src="../public/jpg/pgzc3.png">
-          </a>
-        </li>
-        <li style="left: 15%;top: 62px;width: 20%;">
-          <a href="#">
-            <img style="margin-left: 12%;width: 88%;" src="../public/jpg/pgzc4.png">
-          </a>
-        </li>
-        <li style="left: 15%;top: 62px;width: 20%;">
-          <a href="#">
-            <img style="margin-left: 12%;width: 88%;" src="../public/jpg/pgzc5.png">
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div id="box">
-      <ul id="ul2" style="display: none;">
-        <li><a href="#">参与记录</a> 
-        </li>
-        <li><a href="#">个人记录</a> 
-        </li>
-        <li><a href="#">中奖记录</a> 
-        </li>
-      </ul>
+        <p>苹果专场</p>
+        <a href="#"><img src="../public/jpg/pgzc1.png" style="left: 6%;top: 8px;width: 16%;"></a>
+        <ul>
+            <li style="left: 15%;top: 62px;width: 20%;"> <a href="#"><img style="margin-left: 12%;width: 88%;" src="../public/jpg/pgzc2.png"></a>
+            <a href="#"><span style="margin-left: 18%;font-size: 100%;color: #000000;">iphone7 32G 【现货】</span></a><br/>
+                <span style="margin-left: 18%;margin-top:50px;font-size: 50%;color: #848484;">总需人次：6188</span>
+                <div class="progressBox" >
+                    <div class="progressBar"></div>
+                </div>
+                <span style="font-size: 50%;color: #848484;"> &nbsp 600 &nbsp &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp  5588</span><br/>
+                <span style="font-size: 50%;color: #848484;"> &nbsp已参与人数  &nbsp  &nbsp  &nbsp &nbsp &nbsp 剩余人数</span>
+                <input class="button1" style="width: 50%;height: 40px;margin-left: 24%;background:#d91d37;color: #ffffff;font-size: 100%; "
+                       type="button" value="立即参与" onclick="location.href='#'"/>
+                <br/><br/><br/>
+            </li>
+            <li style="left: 15%;top: 62px;width: 20%;"> <a href="#"><img style="margin-left: 12%;width: 88%;" src="../public/jpg/pgzc3.png"></a>
+                <a href="#"><span style="margin-left: 18%;font-size: 100%;color: #000000;">iphone7 32G 【现货】</span></a><br/>
+                <span style="margin-left: 18%;margin-top:50px;font-size: 50%;color: #848484;">总需人次：6188</span>
+                <div class="progressBox">
+                    <div class="progressBar"></div>
+                </div>
+                <span style="font-size: 50%;color: #848484;"> &nbsp 600 &nbsp &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp  5588</span><br/>
+                <span style="font-size: 50%;color: #848484;"> &nbsp已参与人数  &nbsp  &nbsp  &nbsp &nbsp &nbsp 剩余人数</span>
+                <input class="button1" style="width: 50%;height: 40px;margin-left: 24%;background:#d91d37;color: #ffffff;font-size: 100%; "
+                       type="button" value="立即参与" onclick="location.href='#'"/>
+                <br/><br/><br/>
+            </li>
+            <li style="left: 15%;top: 62px;width: 20%;"> <a href="#"><img style="margin-left: 12%;width: 88%;" src="../public/jpg/pgzc4.png"></a>
+                <a href="#"><span style="margin-left: 18%;font-size: 100%;color: #000000;">iphone7 32G 【现货】</span></a><br/>
+                <span style="margin-left: 18%;margin-top:50px;font-size: 50%;color: #848484;">总需人次：6188</span>
+                <div class="progressBox">
+                    <div class="progressBar"></div>
+                </div>
+                <span style="font-size: 50%;color: #848484;"> &nbsp 600 &nbsp &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp  5588</span><br/>
+                <span style="font-size: 50%;color: #848484;"> &nbsp已参与人数  &nbsp  &nbsp  &nbsp &nbsp &nbsp 剩余人数</span>
+                <input class="button1" style="width: 50%;height: 40px;margin-left: 24%;background:#d91d37;color: #ffffff;font-size: 100%; "
+                       type="button" value="立即参与" onclick="location.href='#'"/>
+                <br/><br/><br/>
+            </li>
+            <li style="left: 15%;top: 62px;width: 20%;"> <a href="#"><img style="margin-left: 12%;width: 88%;" src="../public/jpg/pgzc5.png"></a>
+                <a href="#"><span style="margin-left: 18%;font-size: 100%;color: #000000;">iphone7 32G 【现货】</span></a><br/>
+                <span style="margin-left: 18%;margin-top:50px;font-size: 50%;color: #848484;">总需人次：6188</span>
+                <div class="progressBox">
+                    <div class="progressBar"></div>
+                </div>
+                <span style="font-size: 50%;color: #848484;"> &nbsp 600 &nbsp &nbsp  &nbsp  &nbsp &nbsp &nbsp &nbsp &nbsp  5588</span><br/>
+                <span style="font-size: 50%;color: #848484;"> &nbsp已参与人数  &nbsp  &nbsp  &nbsp &nbsp &nbsp 剩余人数</span>
+                <input class="button1" style="width: 50%;height: 40px;margin-left: 24%;background:#d91d37;color: #ffffff;font-size: 100%; "
+                       type="button" value="立即参与" onclick="location.href='#'"/>
+                <br/><br/><br/>
+            </li>
+        </ul>
     </div>
     <div id="lId" style="display: none;">
       <div id="logindiv">

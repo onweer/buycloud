@@ -2,7 +2,7 @@
  * Created by Administrator on 2016/9/22.
  */
 
-var timer      = null;
+var time      = null;
 var autoTime   = null;
 var ms         = 100;
 var autoMs     = 3000;
@@ -113,8 +113,8 @@ function goTime(index)
 
     iTarget = -index * iLiWidth;
 
-    if(timer){ clearInterval(timer); }
-    timer = setInterval("doMove("+ iTarget +")",ms)
+    if(time){ clearInterval(time); }
+    time = setInterval("doMove("+ iTarget +")",ms)
     doMove(iTarget);
 }
 
@@ -133,21 +133,34 @@ function doMove(target)
         clearInterval(timer); timer = null;
     }
 
-    var oUl2=document.getElementById('ul2');
-    var oLi1=document.getElementById('li1');
-    var oBox=document.getElementById("box");
 
-    oLi1.onmouseover=function(){
-        oUl2.style.display='block';
-    }
+}
 
-    oLi1.onmouseout=function(){
-        oUl2.style.display='none';
+//进度条
+
+
+function progressFn(cent){
+    var cent=10;
+
+    var oDiv1=document.getElementsByClassName('progressBox');
+    var oDiv2=document.getElementsByClassName('progressBar');
+    var oBtn=document.getElementsByClassName('button1');
+    var i;
+    for (i = 0; i < oDiv1.length; i++) {
+        var allWidth = parseInt(getStyle(oDiv1[i],'width'));
+        oDiv2[i].style.clip = 'rect(0px,'+ cent/100 * allWidth +'px,40px,0px)';
     }
-    oBox.onmouseover=function(){
-        oUl2.style.display='block';
-    }
-    oBox.onmouseout=function(){
-        oUl2.style.display='none';
+    //var oDiv1 = document.getElementById('progressBox');
+    //var oDiv2 = document.getElementById('progressBar');
+    //var allWidth = parseInt(getStyle(oDiv1[0],'width'));
+    //oDiv2[0].style.clip = 'rect(0px,'+ cent/100 * allWidth +'px,40px,0px)';
+
+    function getStyle(obj,attr){
+        if(obj.currentStyle){
+            return obj.currentStyle[attr];
+        }
+        else{
+            return getComputedStyle(obj,false)[attr];
+        }
     }
 }
