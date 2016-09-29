@@ -47,7 +47,9 @@ router.post('/register', function (req, res) {
   user.register(user_name, password).then(msg => {
     console.log(msg);
   }).catch(err => {
-    console.log(err);
+    res.render('404', {
+      err: err.toString()
+    })
   })
 });
 
@@ -62,11 +64,14 @@ router.post('/login', function (req, res) {
       user_name: user.account
     })
   }).catch(err => {
-    console.log(err);
+    res.render('404', {
+      err: err.toString()
+    })
   });
 })
 
 /* 管理员添加商品页面*/
+
 router.get('/newgoods', function (req, res) {
 
 })
@@ -76,7 +81,9 @@ router.post('/newgoods', function (req, res) {
   goods.newGoods('iPhone7 Plus', '一个肾也好', 8888, 9999, '手机').then(doc => {
     console.log(doc);
   }).catch(err => {
-    console.log(err);
+    res.render('404', {
+      err: err.toString()
+    })
   })
 })
 

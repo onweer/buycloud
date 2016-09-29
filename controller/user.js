@@ -63,10 +63,11 @@ var _shoppingCartInfo = function (uid) {
               if (err) reject(err)
               console.log(doc2);
               var temp = {};
+              temp._id = doc2.id;
               temp.name = doc2.name;
               temp.price = doc2.price;
               temp.remainNum = doc2.required_no - doc2.joined_no;
-              temp.amount = doc.shopping_cart.amount;
+              temp.amount = cart.amount;
               carts.push(temp);
               ep.emit('done', temp)
             })
