@@ -60,17 +60,28 @@ router.post('/login', function(req, res) {
 
 })
 
-/* 商品页面 */
-// route.get('/goods', function (req, res) {
-//
-// })
-//
-// /* 购买商品 */
-// router.post('/goods', function (req, res) {
-//
-// })
-//
+/* 某一商品展示页面 */
+route.get('/goods', function (req, res) {
 
+})
+
+/* 购买某一商品 */
+router.post('/goods', function (req, res) {
+
+})
+
+// 添加某一个商品到购物车
+router.post('/add_to_cart', function (req, res) {
+  
+})
+
+// 购物车页面
+router.get('/shopping_cart', function (req, res) {
+    var _id = req.body._id;
+    var goods_name = req.body.goods_name;
+    var goods_num = req.body.goods_num;
+
+})
 // 购物车
 router.post('/shopping_cart', function (req, res) {
     var _id = req.body._id;
@@ -81,7 +92,9 @@ router.post('/shopping_cart', function (req, res) {
 
 // 结算
 router.post('/shopping', function (req, res) {
-    
+
 })
+
+//
 
 module.exports = router
