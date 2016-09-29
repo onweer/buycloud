@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const user = require('./controller/user');
+const goods = require('./controller/goods')
 const _ = require('lodash');
 const validator = require('validator');
 
@@ -10,10 +11,6 @@ router.get('/', function (req, res, next) {
     user_name: '请登录'
   })
 });
-
-router.get('/goods', function (req, res, next) {
-  res.render('goods')
-})
 
 /* 登录|注册 */
 router.get('/login', function (req, res) {
@@ -40,6 +37,8 @@ router.post('/register', function (req, res) {
   }
   user.register(user_name, password).then(msg => {
     console.log(msg);
+  }).catch(err => {
+    console.log(err);
   })
 });
 
@@ -57,12 +56,24 @@ router.post('/login', function (req, res) {
   }).catch(err => {
     console.log(err);
   });
+})
+
+/* 管理员添加商品页面*/
+router.get('/newgoods', function (req, res) {
+
+})
+
+/* 管理员添加一个商品*/
+router.post('/newgoods', function (req, res) {
 
 })
 
 /* 某一商品展示页面 */
 router.get('/goods', function (req, res) {
-
+  var goods_id = req.query.goods_id
+  goods.oneGoods(goods_id).then(doc => {
+    res.render('goods', doc) //
+  })
 })
 
 /* 购买某一商品 */
@@ -75,19 +86,27 @@ router.post('/add_to_cart', function (req, res) {
 
 })
 
-// 购物车页面
-router.get('/shopping_cart', function (req, res) {
-    var _id = req.body._id;
-    var goods_name = req.body.goods_name;
-    var goods_num = req.body.goods_num;
-
-  })
-  // 购物车
+// 购物车
 router.post('/shopping_cart', function (req, res) {
   var _id = req.body._id;
   var goods_name = req.body.goods_name;
   var goods_num = req.body.goods_num;
+})
 
+router.get('/shopping_cart', function (req, res) {
+  // 从数据库中取用户购物车的信息
+  user.shoppingCartInfo(req.query.id).then(carts => {
+    res.render('shopping-cart', carts.shopping_cart) // 购物车数组
+  }).catch(err => {
+    console.log(err);
+  })
+})
+
+// 购物车
+router.post('/shopping_cart', function (req, res) {
+  var id = req.body.id;
+  var goods_name = req.body.goods_name;
+  var goods_num = req.body.goods_num;
 })
 
 // 结算

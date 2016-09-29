@@ -43,7 +43,17 @@ var _shoppingCart = function(goodsArray) {
   console.log('====== _shoppingCart method in ======');
 }
 
-// 验证用例，promise用法
+var _shoppingCartInfo = function(uid) {
+    console.log('====== _shoppingCartInfo method in ======');
+    return new Promise(function(resolve, reject) {
+      User.findById(uid, (err, doc) => {
+        if (err) reject(err);
+        if (!doc) reject('用户不存在')
+        if (doc) resolve(doc)
+      })
+    })
+  }
+  // 验证用例，promise用法
 
 // _auth('gggg', '123')
 //   .then(msg => {
@@ -55,3 +65,5 @@ var _shoppingCart = function(goodsArray) {
 
 module.exports.auth = _auth;
 module.exports.register = _register;
+module.exports.shoppingCart = _shoppingCart;
+module.exports.shoppingCartInfo = _shoppingCartInfo;
