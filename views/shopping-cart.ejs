@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>云购购物车</title>
+  <link rel="stylesheet" href="../public/css/cart.css" >
+  <link rel="stylesheet" type="text/css" href="../public/css/URAndL.css">
+</head>
+<body>
+<div class="cart-maindiv" id="cartmaindiv">
+  <div class="cart-title">
+    <span style="margin-right:42%;margin-left:4%">商品</span><span style="margin-right:13%">剩余人次</span><span style="margin-right:13%">云购人次</span><span>小计</span>
+  </div>
+
+  <% for(var i=0; i<carts.length;i++){ %>
+    <ul>
+      <li class="cart-li-pic"><img style="margin-top:5%" src="http://goodsimg.1yyg.com/GoodsPic/pic-70-70/20160908104621494.jpg">
+        <div style="float:right;margin-right:100px;margin-top:7%">
+          <p><%= carts[i].name %></p>
+          <p><%= carts[i].price %></p>
+        </div>
+      </li><li class="cart-li"><%= carts[i].remainNum %></li><li class="cart-li"><input name="name" value="<%= carts[i].price %>"></li><li style="margin-right:10%">￥1.00</li><li><i class="iconfont">&#xe641;</i></li>
+    </ul>
+    <% } %>
+    <div class="cart-paybtn"><p>共3件商品金额总计：￥3.00</p> <button type="button" name="button">结算</button></div>
+</div>
+</body>
+</html>
