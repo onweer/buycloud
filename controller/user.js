@@ -2,7 +2,7 @@ var Goods = require('../model/goods');
 var User = require('../model/user')
 const encryption = require('../bin/md5').encryption;
 // 用户验证API，传入帐号，密码
-var _auth = function(account, pwd) {
+var _auth = function (account, pwd) {
   console.log('====== _auth method in ======');
   return new Promise((resolve, reject) => {
     User.findOne({
@@ -20,14 +20,14 @@ var _auth = function(account, pwd) {
           });
         } else {
           resolve('验证失败')
-        };
+        }
       });
   });
 }
 
-var _register = function(account, pwd) {
+var _register = function (account, pwd) {
   console.log('====== _register method in ======');
-  return new Promise(function(resolve, reject) {
+  return new Promise(function (resolve, reject) {
     var userEntity = new User({
       account: 'hjk',
       pwd: '123'
@@ -39,13 +39,13 @@ var _register = function(account, pwd) {
   });
 }
 
-var _shoppingCart = function(goodsArray) {
+var _shoppingCart = function (goodsArray) {
   console.log('====== _shoppingCart method in ======');
 }
 
-var _shoppingCartInfo = function(uid) {
+var _shoppingCartInfo = function (uid) {
     console.log('====== _shoppingCartInfo method in ======');
-    return new Promise(function(resolve, reject) {
+    return new Promise(function (resolve, reject) {
       User.findById(uid, (err, doc) => {
         if (err) reject(err);
         if (!doc) reject('用户不存在')

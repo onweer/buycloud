@@ -73,6 +73,10 @@ router.get('/goods', function (req, res) {
   var goods_id = req.query.goods_id
   goods.oneGoods(goods_id).then(doc => {
     res.render('goods', doc) //
+  }).catch(err => {
+    res.render('404', {
+      err: err.toString()
+    });
   })
 })
 
