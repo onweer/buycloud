@@ -5,22 +5,22 @@ const validator = require('validator');
 
 // import  other router from ./routes folder
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   res.render('index', {
     user_name: '请登录'
   })
 });
 
-router.get('/goods', function(req, res, next) {
+router.get('/goods', function (req, res, next) {
   res.render('goods')
 })
 
 /* 登录|注册 */
-router.get('/login', function(req, res) {
+router.get('/login', function (req, res) {
   res.render("USAndL")
 });
 
-router.post('/register', function(req, res) {
+router.post('/register', function (req, res) {
   var user_name = req.body.user_name.toLowerCase().trim()
   var password = req.body.password.trim()
   if (!validator.isEmail(user_name)) {
@@ -44,7 +44,7 @@ router.post('/register', function(req, res) {
 });
 
 /* 登录|注册表单提交*/
-router.post('/login', function(req, res) {
+router.post('/login', function (req, res) {
   var user_name = req.body.user_name.toLowerCase().trim()
   var password = req.body.password.trim()
     // password = encryption(password)
@@ -61,7 +61,7 @@ router.post('/login', function(req, res) {
 })
 
 /* 某一商品展示页面 */
-route.get('/goods', function (req, res) {
+router.get('/goods', function (req, res) {
 
 })
 
@@ -72,7 +72,7 @@ router.post('/goods', function (req, res) {
 
 // 添加某一个商品到购物车
 router.post('/add_to_cart', function (req, res) {
-  
+
 })
 
 // 购物车页面
@@ -81,12 +81,12 @@ router.get('/shopping_cart', function (req, res) {
     var goods_name = req.body.goods_name;
     var goods_num = req.body.goods_num;
 
-})
-// 购物车
+  })
+  // 购物车
 router.post('/shopping_cart', function (req, res) {
-    var _id = req.body._id;
-    var goods_name = req.body.goods_name;
-    var goods_num = req.body.goods_num;
+  var _id = req.body._id;
+  var goods_name = req.body.goods_name;
+  var goods_num = req.body.goods_num;
 
 })
 
