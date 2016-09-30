@@ -165,16 +165,19 @@ router.get('/shopping_cart', function (req, res) {
     })
   }
   // 从数据库中取用户购物车的信息
-  user.shoppingCartInfo(req.session.user.id).then(carts => {
-    console.log(carts);
-    res.render('shopping-cart', {
-        carts: carts
-      }) // 购物车数组
-  }).catch(err => {
-    res.render('404', {
-      err: err.toString()
-    });
-  })
+  user.shoppingCartInfo(req.session.user.id)
+    .then(carts => {
+      console.log(carts);
+      res.render('shopping-cart', {
+        carts: carts,
+        user_name: req.session.user.account
+      }); // 购物车数组
+    })
+    .catch(err => {
+      res.render('404', {
+        err: err.toString()
+      });
+    })
 })
 
 
