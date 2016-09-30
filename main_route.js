@@ -150,6 +150,10 @@ router.post('/shopping', function (req, res) {
 
 })
 
+
+router.get('/Participate',function(req,res){
+  res.render('Participate')
+})
 //
 
 module.exports = router
