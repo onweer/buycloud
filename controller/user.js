@@ -32,12 +32,12 @@ var _register = function (account, pwd) {
   console.log('====== _register method in ======');
   return new Promise(function (resolve, reject) {
     var userEntity = new User({
-      account: 'hjk',
-      pwd: '123'
+      account: account,
+      pwd: pwd
     })
     userEntity.save((err, doc) => {
       if (err) reject(err);
-      if (doc) resolve('注册成功');
+      if (doc) resolve(doc);
     })
   });
 }
@@ -227,9 +227,21 @@ var _rewardList = function (uid) {
   });
 }
 
+var _getInfo = function (uid) {
+  return new Promise((resolve, reject) => {
+    User.findOne({
+      _id: uid,
+    })
+    .exec()
+    .then(doc => resolve(doc.addresses))
+    .catch(err => reject(err))
+  })
+}
+
 module.exports.auth = _auth;
 module.exports.register = _register;
 module.exports.shoppingCart = _shoppingCart;
 module.exports.shoppingCartInfo = _shoppingCartInfo;
 module.exports.participate = _participate;
 module.exports.rewardList = _rewardList;
+module.exports.getInfo = _getInfo;

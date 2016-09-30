@@ -48,8 +48,10 @@ router.post('/register', function (req, res) {
       err: '密码长度请控制在6~32位'
     })
   }
-  user.register(user_name, password).then(msg => {
-    console.log(msg);
+  user.register(user_name, password).then(doc => {
+    console.log(doc);
+    req.session.user = doc
+    res.redirect('/')
   }).catch(err => {
     res.render('404', {
       err: err.toString()
@@ -240,7 +242,19 @@ router.get('/Participate', function (req, res) {
     })
 })
 
-
+router.get('/personinfo', function (req, res) {
+  if (!req.session.user) {
+    return res.render('404', {
+      err: '用户未登录'
+    })
+  }
+  user.getInfo(req.session.user.id).then(doc => {
+    res.render('personinfo', {
+      user_name: req.session.user.account,
+      addresses: doc
+    })
+  })
+})
 
 // router.get('/Participate', function (req, res) {
 //   res.render('Participate');
