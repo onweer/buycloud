@@ -196,10 +196,18 @@ router.get('/reward', function (req, res) {
       err: "用户未登陆"
     });
   } else {
-    var data = {};
-    data.user_name = req.session.user.account;
-    data.list = [];
-    res.render('reward', data);
+    user.rewardList(req.session.user.id)
+      .then(doc => {
+        var data = {};
+        data.user_name = req.session.user.account;
+        data.reward_list = doc.win_list;
+        res.render('reward', data);
+      })
+      .catch(err => {
+        res.render('404', {
+          err: err.toString()
+        });
+      });
   }
 })
 

@@ -57,11 +57,11 @@ var _register = function (account, pwd) {
 var _shoppingCart = function (user_name, user_ip, ids, amounts) {
   console.log('====== _shoppingCart method in ======');
   return new Promise(function (Outresolve, Outreject) {
-    if(!Array.isArray(ids) || !Array.isArray(ids)) reject('参数错误')
-    // var ep = new eventproxy()
-    // ep.after('done', ids.length, function (docs) {
-    //   resolve(docs)
-    // })
+    if (!Array.isArray(ids) || !Array.isArray(ids)) Outreject('参数错误')
+      // var ep = new eventproxy()
+      // ep.after('done', ids.length, function (docs) {
+      //   resolve(docs)
+      // })
     var promiseArray = ids.map((id, idx) => {
       return new Promise((resolve, reject) => {
         Goods.findById(id, (err, doc) => {
@@ -69,10 +69,11 @@ var _shoppingCart = function (user_name, user_ip, ids, amounts) {
           var joined_list = doc.joined_list || [];
           var receive_no = [];
           console.log(amounts.length);
-          if(joined_list.length !== 0){
-            var start = _.last(joined_list[joined_list.length - 1].receive_no) + 1;
-          }else {
-            var start = 10001; // 开始的num
+          var start = 0;
+          if (joined_list.length !== 0) {
+            start = _.last(joined_list[joined_list.length - 1].receive_no) + 1;
+          } else {
+            start = 10001; // 开始的num
           }
           for (var i = start; i < start + parseInt(amounts[idx]) + 1; ++i) {
             console.log(i);
@@ -87,25 +88,25 @@ var _shoppingCart = function (user_name, user_ip, ids, amounts) {
           doc.joined_list = joined_list;
           // 保存到用户参与记录
           User.findOne({
-            user_name: user_name
-          }).exec((err, doc) => {
-            console.log(doc);
-            doc.purchased_goods_list = {
-              goods_name: id,
-              purchase_time: new Date(),
-              receive_no: receive_no
-            }
-            doc.save(function (err) {
-              if(err) reject(err)
-              resolve()
+              user_name: user_name
+            }).exec((err, doc) => {
+              console.log(doc);
+              doc.purchased_goods_list = {
+                goods_name: id,
+                purchase_time: new Date(),
+                receive_no: receive_no
+              }
+              doc.save(function (err) {
+                if (err) reject(err)
+                resolve()
+              })
             })
-          })
-          // 保存到GOODS
+            // 保存到GOODS
           doc.save(function (err) {
-            if (err) reject(err);
-            resolve();
-          })
-          // ep.emit('one', doc.save())
+              if (err) reject(err);
+              resolve();
+            })
+            // ep.emit('one', doc.save())
         })
       })
     })
@@ -191,7 +192,19 @@ var _shoppingCartInfo = function (uid) {
 //     console.log(err);
 //   });
 
+var _rewardList = function (uid) {
+  return new Promise((resolve, reject) => {
+    User.findOne({
+        _id: uid
+      })
+      .exec()
+      .then(doc => resolve(doc))
+      .catch(err => reject(err));
+  });
+}
+
 module.exports.auth = _auth;
 module.exports.register = _register;
 module.exports.shoppingCart = _shoppingCart;
 module.exports.shoppingCartInfo = _shoppingCartInfo;
+module.exports.rewardList = _rewardList;
