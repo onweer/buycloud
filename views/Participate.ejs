@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>云购购物车</title>
-  <link rel="stylesheet" href="../public/css/cart.css" >
-  <link rel="stylesheet" type="text/css" href="../public/css/URAndL.css">
+  <link rel="stylesheet" href="../public/css/recond.css" >
   <script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="../public/js/cart.js"></script>
     <script type="text/javascript" src="../public/js/box1.js"></script>
@@ -19,7 +18,6 @@
     <ul id="ul1" style="top: -16px;left: 70%;">
       <li>
         <a class="active" href="#">
-
         </a>|</li>
       <li id="li1"><a href="#">我的一元购<img src="../public/jpg/箭头.png" style="top: 20%;"></a>|</li>
       <li><a href="#">余额</a>|</li>
@@ -49,27 +47,20 @@
       </li>
     </ul>
   </div>
-<div class="cart-maindiv" id="cartmaindiv">
-  <div class="cart-title">
-    <span style="margin-right:42%;margin-left:4%">商品</span><span style="margin-right:13%">剩余人次</span><span style="margin-right:13%">云购人次</span><span>小计</span>
-  </div>
-<form action="/shopping_cart" method="post">
-  <% for(var i=0; i<carts.length;i++){ %>
-    <ul id="ul<%= i%>">
-      <input type="text" name="_id" value="<%= carts[i]._id%>" style="display:none">
-      <li class="cart-li-pic"><img style="margin-top:5%;clear:both" src="http://goodsimg.1yyg.com/GoodsPic/pic-70-70/20160908104621494.jpg">
-        <div style="float:right;margin-right:150px;margin-top:7%">
-          <p style="line-height:15px"><%= carts[i].name %></p>
-          <p>价值:￥<%= carts[i].price %></p>
-        </div>
-      </li>
-      <li class="cart-li"><%= carts[i].remainNum %></li>
-      <li class="cart-li"><input name="amount" value="<%= carts[i].amount %>"></li>
-      <li style="margin-right:10%;color:#f60;margin-top:4%">￥1.00</li><li style="margin-top:4%"><a href="#" style="text-decoration: none;" onclick="delul('ul<%= i%>')"><i class="iconfont">&#xe641;</i></a></li>
-    </ul>
-    <% } %>
-    <div class="cart-paybtn"><p>共<%= carts.length%>件商品金额总计：￥1.00</p> <button type="submit" style="width: 100%;" class="btn btn-primary btn-lg">结算</button></div>
-  </form>
+
+<div class="reconddiv">
+  <ul>
+    <li><span style="margin-left:2%">时间</span><span>会员邮箱</span><span>IP地址</span><span>选中号码</span></li>
+  </ul>
+  <% for(var i=0;i<joined_list.length;i++){ %>
+    <li>
+      <span style="margin-left:2%"><%=joined_list.purchase_time %></span>
+      <span><%=joined_list.user_name %></span>
+      <span><%=joined_list.user_ip %></span>
+      <span><%=joined_list.receive_no %></span></li>
+  <% } %>
+
 </div>
+
 </body>
 </html>
