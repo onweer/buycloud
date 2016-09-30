@@ -18,7 +18,6 @@
     <ul id="ul1" style="top: -16px;left: 70%;">
       <li>
         <a class="active" href="#">
-
         </a>|</li>
       <li id="li1"><a href="#">我的一元购<img src="../public/jpg/箭头.png" style="top: 20%;"></a>|</li>
       <li><a href="#">余额</a>|</li>
@@ -53,6 +52,14 @@
   <ul>
     <li><span style="margin-left:2%">时间</span><span>会员邮箱</span><span>IP地址</span><span>选中号码</span></li>
   </ul>
+  <% for(var i=0;i<joined_list.length;i++){ %>
+    <li>
+      <span style="margin-left:2%"><%=joined_list.purchase_time %></span>
+      <span><%=joined_list.user_name %></span>
+      <span><%=joined_list.user_ip %></span>
+      <span><%=joined_list.receive_no %></span></li>
+  <% } %>
+
 </div>
 
 </body>
