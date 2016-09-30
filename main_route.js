@@ -157,7 +157,11 @@ router.get('/zxjx', function (req, res) {
 
 // 购物车页面
 router.get('/shopping_cart', function (req, res) {
-  if(!req.session.user) res.render('404', '用户未登陆')
+  if (!req.session.user) {
+    res.render('404', {
+      err: '用户未登录'
+    })
+  }
   // 从数据库中取用户购物车的信息
   user.shoppingCartInfo(req.session.user.id).then(carts => {
     console.log(carts);
@@ -174,8 +178,8 @@ router.get('/shopping_cart', function (req, res) {
 
 // 购物车结算
 
-router.post('/shopping_cart', function(req, res) {
-  if(!req.session.user) res.render('404', '用户未登陆')
+router.post('/shopping_cart', function (req, res) {
+  if (!req.session.user) res.render('404', '用户未登陆')
   var _id = req.body._id;
   var amount = req.body.amount;
   user.shoppingCart(req.session.user.user_name, req.ip, _id, amount).then((doc) => {
@@ -200,25 +204,40 @@ router.get('/reward', function (req, res) {
       err: "用户未登陆"
     });
   } else {
-    var data = {};
-    data.user_name = req.session.user.account;
-    data.list = [];
-    res.render('reward', data);
+    user.rewardList(req.session.user.id)
+      .then(doc => {
+        var data = {};
+        data.user_name = req.session.user.account;
+        data.reward_list = doc.win_list;
+        res.render('reward', data);
+      })
+      .catch(err => {
+        res.render('404', {
+          err: err.toString()
+        });
+      });
   }
 });
 
 
-router.get('/Participate',function(req,res){
-  if(!req.session.user) res.render('404', '用户未登陆')
-  user.participate(req.session.user.id, req.session.user.account).then(docs => {
-    console.log(docs);
-    res.render('Participate', {joined_list: docs})
-  })
-  .catch(err => {
+router.get('/Participate', function (req, res) {
+  if (!req.session.user) {
     res.render('404', {
-      err: err.toString()
-    });
-  })
+      err: '用户未登录'
+    })
+  }
+  user.participate(req.session.user.id, req.session.user.account).then(docs => {
+      console.log(docs);
+      res.render('Participate', {
+        joined_list: docs,
+        user_name: req.session.user.account
+      })
+    })
+    .catch(err => {
+      res.render('404', {
+        err: err.toString()
+      });
+    })
 })
 
 

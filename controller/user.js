@@ -57,11 +57,11 @@ var _register = function (account, pwd) {
 var _shoppingCart = function (user_name, user_ip, ids, amounts) {
   console.log('====== _shoppingCart method in ======');
   return new Promise(function (Outresolve, Outreject) {
-    if(!Array.isArray(ids) || !Array.isArray(ids)) reject('参数错误')
-    // var ep = new eventproxy()
-    // ep.after('done', ids.length, function (docs) {
-    //   resolve(docs)
-    // })
+    if (!Array.isArray(ids) || !Array.isArray(ids)) Outreject('参数错误')
+      // var ep = new eventproxy()
+      // ep.after('done', ids.length, function (docs) {
+      //   resolve(docs)
+      // })
     var promiseArray = ids.map((id, idx) => {
       return new Promise((resolve, reject) => {
         Goods.findById(id, (err, doc) => {
@@ -69,9 +69,9 @@ var _shoppingCart = function (user_name, user_ip, ids, amounts) {
           var joined_list = doc.joined_list || [];
           var receive_no = [];
           console.log(amounts.length);
-          if(joined_list.length !== 0){
+          if (joined_list.length !== 0) {
             var start = _.last(joined_list[joined_list.length - 1].receive_no) + 1;
-          }else {
+          } else {
             var start = 10001; // 开始的num
           }
           for (var i = start; i < start + parseInt(amounts[idx]) + 1; ++i) {
@@ -87,26 +87,26 @@ var _shoppingCart = function (user_name, user_ip, ids, amounts) {
           doc.joined_list = joined_list;
           // 保存到用户参与记录
           User.findOne({
-            user_name: user_name
-          }).exec((err, doc) => {
-            console.log(doc);
-            var purchased_goods_list = {
-              goods_name: id,
-              purchase_time: new Date(),
-              receive_no: receive_no
-            }
-            doc.purchased_goods_list.push(purchased_goods_list)
-            doc.save(function (err) {
-              if(err) reject(err)
-              resolve()
+              user_name: user_name
+            }).exec((err, doc) => {
+              console.log(doc);
+              var purchased_goods_list = {
+                goods_name: id,
+                purchase_time: new Date(),
+                receive_no: receive_no
+              }
+              doc.purchased_goods_list.push(purchased_goods_list)
+              doc.save(function (err) {
+                if (err) reject(err)
+                resolve()
+              })
             })
-          })
-          // 保存到GOODS
+            // 保存到GOODS
           doc.save(function (err) {
-            if (err) reject(err);
-            resolve();
-          })
-          // ep.emit('one', doc.save())
+              if (err) reject(err);
+              resolve();
+            })
+            // ep.emit('one', doc.save())
         })
       })
     })
@@ -148,65 +148,65 @@ var _shoppingCart = function (user_name, user_ip, ids, amounts) {
 
 // 获取购物车信息
 var _shoppingCartInfo = function (uid) {
-    console.log('====== _shoppingCartInfo method in ======');
-    return new Promise(function (resolve, reject) {
-      var ep = new eventproxy();
-      User.findById(uid, (err, doc) => {
-        if (err) reject(err);
-        if (!doc) reject('用户不存在')
-        if (doc.shopping_cart.length > 0) {
-          var ep = new eventproxy(),
-            carts = [];
-          ep.after('done', doc.shopping_cart.length, function (carts) {
-            resolve(carts)
+  console.log('====== _shoppingCartInfo method in ======');
+  return new Promise(function (resolve, reject) {
+    var ep = new eventproxy();
+    User.findById(uid, (err, doc) => {
+      if (err) reject(err);
+      if (!doc) reject('用户不存在')
+      if (doc.shopping_cart.length > 0) {
+        var ep = new eventproxy(),
+          carts = [];
+        ep.after('done', doc.shopping_cart.length, function (carts) {
+          resolve(carts)
+        })
+        console.log(doc.shopping_cart);
+        doc.shopping_cart.forEach(function (cart) {
+          Goods.findById(cart.id, (err, doc2) => {
+            if (err) reject(err)
+            console.log(doc2);
+            var temp = {};
+            temp._id = doc2.id;
+            temp.name = doc2.name;
+            temp.price = doc2.price;
+            temp.remainNum = doc2.required_no - doc2.joined_no;
+            temp.amount = cart.amount;
+            carts.push(temp);
+            ep.emit('done', temp)
           })
-          console.log(doc.shopping_cart);
-          doc.shopping_cart.forEach(function (cart) {
-            Goods.findById(cart.id, (err, doc2) => {
-              if (err) reject(err)
-              console.log(doc2);
-              var temp = {};
-              temp._id = doc2.id;
-              temp.name = doc2.name;
-              temp.price = doc2.price;
-              temp.remainNum = doc2.required_no - doc2.joined_no;
-              temp.amount = cart.amount;
-              carts.push(temp);
-              ep.emit('done', temp)
-            })
-          })
+        })
 
-        } else {
-          resolve([])
-        }
-      })
+      } else {
+        resolve([])
+      }
     })
-  }
+  })
+}
 
-  // 验证用例，promise用法
+// 验证用例，promise用法
 
-  var _participate = function (uid, user_name) {
-      console.log('====== _participate method in ======');
-      console.log(uid);
-      return new Promise((resolve, reject) => {
-        var array = []
-        Goods.find({}, function (err, docs) {
-            docs.forEach(function (e) {
-              var temp = e.joined_list
-              temp.forEach(function (e1) {
-                var temp2 = {};
-                temp2.date = e1.purchase_time.format('yyyy-mm-dd HH:MM:ss');
-                temp2.user_ip = e1.user_ip;
-                temp2.receive_no = e1.receive_no;
-                temp2.user_name = user_name
-                array.push(temp2)
-              })
-            })
-            resolve(array)
+var _participate = function (uid, user_name) {
+  console.log('====== _participate method in ======');
+  console.log(uid);
+  return new Promise((resolve, reject) => {
+    var array = []
+    Goods.find({}, function (err, docs) {
+      docs.forEach(function (e) {
+        var temp = e.joined_list
+        temp.forEach(function (e1) {
+          var temp2 = {};
+          temp2.date = e1.purchase_time.format('yyyy-mm-dd HH:MM:ss');
+          temp2.user_ip = e1.user_ip;
+          temp2.receive_no = e1.receive_no;
+          temp2.user_name = user_name
+          array.push(temp2)
         })
       })
+      resolve(array)
+    })
+  })
 
-  }
+}
 
 // _auth('gggg', '123')
 //   .then(msg => {
@@ -216,8 +216,20 @@ var _shoppingCartInfo = function (uid) {
 //     console.log(err);
 //   });
 
+var _rewardList = function (uid) {
+  return new Promise((resolve, reject) => {
+    User.findOne({
+        _id: uid
+      })
+      .exec()
+      .then(doc => resolve(doc))
+      .catch(err => reject(err));
+  });
+}
+
 module.exports.auth = _auth;
 module.exports.register = _register;
 module.exports.shoppingCart = _shoppingCart;
 module.exports.shoppingCartInfo = _shoppingCartInfo;
 module.exports.participate = _participate;
+module.exports.rewardList = _rewardList;
