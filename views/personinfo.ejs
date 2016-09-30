@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>云购购物车</title>
+  <link rel="stylesheet" href="../public/css/recond.css" >
+  <script type="text/javascript" src="../public/js/jquery-2.1.4.min.js"></script>
+  <script type="text/javascript" src="../public/js/cart.js"></script>
+    <script type="text/javascript" src="../public/js/box1.js"></script>
+      <link href="../public/css/index.css" rel="stylesheet" type="text/css" />
+      <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+  <div id="div1">
+    <p>欢迎来到一元云购！</p>
+    <ul id="ul1" style="top: -16px;left: 70%;">
+      <li>
+        <a class="active" href="#">
+        </a>|</li>
+      <li id="li1"><a href="#">我的一元购<img src="../public/jpg/箭头.png" style="top: 20%;"></a>|
+        <ul>
+          <li><a href="#">参与记录</a>
+          </li>
+          <li><a href="/Participate">个人记录</a>
+          </li>
+          <li><a href="#">中奖记录</a>
+          </li>
+        </ul>
+      </li>
+
+      <li><a href="#">余额</a>|</li>
+      <li><a href="#">我的红包</a>|</li>
+      <li><a href="#">充值</a>|</li>
+      <li><a href="#">帮助</a>|</li>
+      <li><a href="#">客户服务</a>
+      </li>
+    </ul>
+  </div>
+  <div id="div2">
+    <img src="../public/jpg/logo.png" style="left:-20%;top: 10px;">
+    <img src="../public/jpg/ewm.jpg" style="left: -16%;top: 4px;">
+    <img src="../public/jpg/sm.png" style="left: -16%;top: 14px;">
+  </div>
+  <div id="fgx" style="z-index: 0;">
+    <ul>
+      <li><a href="/">首页</a>
+      </li>
+      <li><a href="#">十元专区</a>
+      </li>
+      <li><a href="#">最新揭晓</a>
+      </li>
+      <li><a href="#">晒单分享</a>
+      </li>
+      <li><a href="#">手机客户端</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="reconddiv">
+    <ul>
+      <li><span style="margin-left:2%">名字</span><span>地址</span><span>电话号码</span></li>
+
+    <% for(var i=0;i<addresses.length;i++){ %>
+      <li>
+        <span style="margin-left:2%"><%=addresses[i].name %></span>
+        <span><%=addresses[i].addr %></span>
+        <span><%=addresses[i].phone %></span>
+    <% } %>
+    </ul>
+  </div>
+
+</body>
+</html>
