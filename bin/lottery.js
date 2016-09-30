@@ -6,6 +6,7 @@ module.exports = (function () {
   var ep = new eventproxy()
   ep.tail('u', 'g', function (u, g) {
     // 判断商品是否已达购买人次
+    //
     g.forEach(function (gOne) {
       if(gOne.required_no === gOne.joined_no){
         // 幸运号
@@ -16,7 +17,7 @@ module.exports = (function () {
           reward_no: random,
           end_date: new Date()
         }
-        g.save().exec()
+        // g.save().exec()
       }
     })
   });
