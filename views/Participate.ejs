@@ -54,10 +54,10 @@
   </ul>
   <% for(var i=0;i<joined_list.length;i++){ %>
     <li>
-      <span style="margin-left:2%"><%=joined_list.purchase_time %></span>
-      <span><%=joined_list.user_name %></span>
-      <span><%=joined_list.user_ip %></span>
-      <span><%=joined_list.receive_no %></span></li>
+      <span style="margin-left:2%"><%=joined_list[i].date %></span>
+      <span><%=joined_list[i].user_name %></span>
+      <span><%=joined_list[i].user_ip %></span>
+      <span><%=joined_list[i].receive_no %></span></li>
   <% } %>
 
 </div>

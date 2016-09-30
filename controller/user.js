@@ -90,11 +90,12 @@ var _shoppingCart = function (user_name, user_ip, ids, amounts) {
             user_name: user_name
           }).exec((err, doc) => {
             console.log(doc);
-            doc.purchased_goods_list = {
+            var purchased_goods_list = {
               goods_name: id,
               purchase_time: new Date(),
               receive_no: receive_no
             }
+            doc.purchased_goods_list.push(purchased_goods_list)
             doc.save(function (err) {
               if(err) reject(err)
               resolve()
@@ -181,7 +182,31 @@ var _shoppingCartInfo = function (uid) {
       })
     })
   }
+
   // 验证用例，promise用法
+
+  var _participate = function (uid, user_name) {
+      console.log('====== _participate method in ======');
+      console.log(uid);
+      return new Promise((resolve, reject) => {
+        var array = []
+        Goods.find({}, function (err, docs) {
+            docs.forEach(function (e) {
+              var temp = e.joined_list
+              temp.forEach(function (e1) {
+                var temp2 = {};
+                temp2.date = e1.purchase_time;
+                temp2.user_ip = e1.user_ip;
+                temp2.receive_no = e1.receive_no;
+                temp2.user_name = user_name
+                array.push(temp2)
+              })
+            })
+            resolve(array)
+        })
+      })
+
+  }
 
 // _auth('gggg', '123')
 //   .then(msg => {
@@ -195,3 +220,4 @@ module.exports.auth = _auth;
 module.exports.register = _register;
 module.exports.shoppingCart = _shoppingCart;
 module.exports.shoppingCartInfo = _shoppingCartInfo;
+module.exports.participate = _participate;
