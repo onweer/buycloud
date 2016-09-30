@@ -159,7 +159,7 @@ router.get('/zxjx', function (req, res) {
 router.get('/shopping_cart', function (req, res) {
   if(!req.session.user) res.render('404', '用户未登陆')
   // 从数据库中取用户购物车的信息
-  user.shoppingCartInfo(req.query.id).then(carts => {
+  user.shoppingCartInfo(req.session.user.id).then(carts => {
     console.log(carts);
     res.render('shopping-cart', {
         carts: carts
