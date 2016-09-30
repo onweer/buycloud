@@ -51,15 +51,15 @@
 <div class="reconddiv">
   <ul>
     <li><span style="margin-left:2%">时间</span><span>会员邮箱</span><span>IP地址</span><span>选中号码</span></li>
-  </ul>
+
   <% for(var i=0;i<joined_list.length;i++){ %>
     <li>
       <span style="margin-left:2%"><%=joined_list[i].date %></span>
       <span><%=joined_list[i].user_name %></span>
       <span><%=joined_list[i].user_ip %></span>
-      <span><%=joined_list[i].receive_no %></span></li>
+      <span style="width:400px"><%=joined_list[i].receive_no %></span></li>
   <% } %>
-
+  </ul>
 </div>
 
 </body>
