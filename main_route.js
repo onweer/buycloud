@@ -160,7 +160,7 @@ router.get('/zxjx', function (req, res) {
 // 购物车页面
 router.get('/shopping_cart', function (req, res) {
   if (!req.session.user) {
-    res.render('404', {
+    return res.render('404', {
       err: '用户未登录'
     })
   }
@@ -205,7 +205,7 @@ router.post('/shopping', function (req, res) {
 
 router.get('/reward', function (req, res) {
   if (!req.session.user) {
-    res.render('404', {
+    return res.render('404', {
       err: "用户未登陆"
     });
   } else {
@@ -227,7 +227,7 @@ router.get('/reward', function (req, res) {
 
 router.get('/Participate', function (req, res) {
   if (!req.session.user) {
-    res.render('404', {
+    return res.render('404', {
       err: '用户未登录'
     })
   }
