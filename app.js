@@ -6,6 +6,7 @@ const session = require('express-session');
 const compression = require('compression');
 const mongoExpress = require('mongo-express/lib/middleware');
 const mongoExpressConfig = require('./mongo_express_config');
+require('date-util'); // 添加在Date对象上Property
 
 var app = express();
 app.use('/mongo', mongoExpress(mongoExpressConfig));

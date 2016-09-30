@@ -195,7 +195,7 @@ var _shoppingCartInfo = function (uid) {
               var temp = e.joined_list
               temp.forEach(function (e1) {
                 var temp2 = {};
-                temp2.date = e1.purchase_time;
+                temp2.date = e1.purchase_time.format('yyyy-mm-dd HH:MM:ss');
                 temp2.user_ip = e1.user_ip;
                 temp2.receive_no = e1.receive_no;
                 temp2.user_name = user_name
