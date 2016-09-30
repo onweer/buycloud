@@ -22,7 +22,16 @@
         <a class="active" href="#">
           <%=user_name %>
         </a>|</li>
-      <li id="li1"><a href="#">我的一元购<img src="../public/jpg/箭头.png" style="top: 20%;"></a>|</li>
+      <li id="li1"><a href="#">我的一元购<img src="../public/jpg/箭头.png" style="top: 20%;"></a>|
+        <ul>
+          <li><a href="#">参与记录</a>
+          </li>
+          <li><a href="/reward">中奖记录</a>
+          </li>
+          <li><a href="/Participate">个人记录</a>
+          </li>
+        </ul>
+      </li>
       <li><a href="#">余额</a>|</li>
       <li><a href="#">我的红包</a>|</li>
       <li><a href="#">充值</a>|</li>
@@ -53,12 +62,12 @@
 
   <div class="reconddiv">
     <ul>
-      <li><span style="margin-left:2%">商品名称</span><span>中奖号码</span>
+      <li><span style="margin-left:2%">商品名称</span><span style="margin-left:30%;width:400px">中奖号码</span>
       </li>
       <% for(var i=0;i<reward_list.length;i++){ %>
         <li>
           <span style="margin-left:2%"><%=reward_list[i].goods_name %></span>
-          <span style="margin-left:2%"><%=reward_list[i].reward_no %></span>
+          <span style="margin-left:30%;width:400px"><%=reward_list[i].reward_no %></span>
         </li>
         <% } %>
     </ul>
