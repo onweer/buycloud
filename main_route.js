@@ -11,7 +11,12 @@ router.get('/', function (req, res, next) {
     .then(docs => {
       var data = {};
       data.goods = docs;
-      data.user_name = '请登录';
+      if (req.session.user) {
+        console.log(req.session.user);
+        data.user_name = req.session.user.account
+      }else {
+        data.user_name = '请登录';
+      }
       res.render('index', data);
     })
     .catch(err => {
@@ -30,19 +35,13 @@ router.post('/register', function (req, res) {
   var user_name = req.body.user_name.toLowerCase().trim()
   var password = req.body.password.trim()
   if (!validator.isEmail(user_name)) {
-    return res.status(200).send({
-      flag: -1,
-      message: '用户名不是邮箱格式'
-    })
+    return res.render('404', {err: '用户名不符合邮箱格式'})
   }
   if (!validator.isLength(password, {
       min: 6,
       max: 32
     })) {
-    return res.status(200).send({
-      flag: -1,
-      message: '密码长度请控制在6至32个字符'
-    })
+    return res.render('404', {err: '密码长度请控制在6~32位'})
   }
   user.register(user_name, password).then(msg => {
     console.log(msg);
@@ -114,6 +113,46 @@ router.post('/add_to_cart', function (req, res) {
 
 })
 
+router.get('/kfd', function (req, res) {
+  var data = {}
+  if(req.session.user){
+    data.user_name = req.session.user.account
+  }
+  else {
+    data.user_name = '请登录'
+  }
+  res.render('kfd', data)
+})
+router.get('/sdfx', function (req, res) {
+  var data = {}
+  if(req.session.user){
+    data.user_name = req.session.user.account
+  }
+  else {
+    data.user_name = '请登录'
+  }
+  res.render('sdfx', data)
+})
+router.get('/sp', function (req, res) {
+  var data = {}
+  if(req.session.user){
+    data.user_name = req.session.user.account
+  }
+  else {
+    data.user_name = '请登录'
+  }
+  res.render('sp', data)
+})
+router.get('/zxjx', function (req, res) {
+  var data = {}
+  if(req.session.user){
+    data.user_name = req.session.user.account
+  }
+  else {
+    data.user_name = '请登录'
+  }
+  res.render('zxjx', data)
+})
 
 // 购物车页面
 router.get('/shopping_cart', function (req, res) {

@@ -49,7 +49,7 @@ img{position: relative;border: none;}
     background:darkred;width: 19%;height: 400px;position: relative;left: 6%;top: 11px;
 }
 #cdlul li{
-    font:100%/1.5 'Lucida Grande',tahoma,arial;text-align: center;margin: 10px;
+    font:120%/1.5 'Lucida Grande',tahoma,arial;text-align: center;margin: 10px;
 }
 /*轮播图样式*/
 .box1 { width: 50%; height: 361px; position: relative; margin: 150px auto 0; background: #ccc; overflow:hidden;top:-500px;max-width: 700px;}
