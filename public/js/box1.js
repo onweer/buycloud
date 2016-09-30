@@ -130,7 +130,7 @@ function doMove(target)
     if( Math.abs(target-oUl.offsetLeft) === 0 )
     {
         oUl.style.left = target + "px";
-        clearInterval(timer); timer = null;
+        clearInterval(time); time = null;
     }
 
 
